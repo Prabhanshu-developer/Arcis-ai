@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090a12">
-  <meta name="description" content="Meet ARCIS — your AI, your control, your intelligence. Explore the Android AI assistant and download the latest APK.">
-  <title>ARCIS — Your AI. Your Control. Your Intelligence.</title>
+  <meta name="theme-color" content="#080910">
+  <meta name="description" content="ARCIS — Your AI. Your Control. Your Intelligence. A local-first AI assistant for Android.">
+  <title>ARCIS — Your AI. Your Control.</title>
   <link rel="icon" href="assets/arcis-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="ARCIS home">
       <img src="assets/arcis-logo.png" alt="ARCIS logo" onerror="this.style.display='none'">
@@ -18,74 +22,83 @@
     </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav id="mainNav">
-      <a href="#features">Features</a><a href="#about">About</a><a href="#download">Download</a>
-      <a class="nav-cta" href="#download">Get ARCIS <span>↗</span></a>
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#about">About</a>
+      <a class="nav-download" href="#download">Download <span>↗</span></a>
     </nav>
   </header>
 
-  <main id="home">
-    <section class="hero section-wrap">
+  <main>
+    <section class="hero section-wrap" id="home">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span> THE NEXT STEP IN PERSONAL AI</div>
+        <div class="eyebrow"><span class="pulse"></span> ANDROID AI ASSISTANT</div>
         <h1>Your AI.<br><span>Your Control.</span><br>Your Intelligence.</h1>
-        <p class="hero-lead">Meet ARCIS — an AI assistant designed to put capable, flexible intelligence in your hands.</p>
+        <p class="hero-text">Meet ARCIS — a local-first AI assistant designed to put useful intelligence in your hands, with on-device AI at its core.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#download">Download for Android <span>↓</span></a>
-          <a class="button button-quiet" href="#features">Explore features <span>↗</span></a>
+          <a class="button button-primary" href="#download">Download ARCIS <span>↓</span></a>
+          <a class="button button-secondary" href="#features">Explore features</a>
         </div>
-        <div class="hero-meta"><span>◆ Android app</span><span>◆ Version <b data-version>1.0</b></span><span>◆ Android 8.0+</span></div>
+        <div class="hero-meta"><span>VERSION <b data-version>1.0</b></span><i></i><span>ANDROID <b>8.0+</b></span><i></i><span>APK</span></div>
       </div>
-      <div class="hero-visual" aria-label="ARCIS product illustration">
+      <div class="hero-visual" aria-label="ARCIS branding graphic">
         <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-        <div class="visual-card">
-          <div class="visual-top"><span class="mini-mark">A</span><span>ARCIS INTELLIGENCE</span><i></i></div>
-          <div class="core"><div class="core-ring"></div><div class="core-letter">A</div></div>
-          <div class="visual-caption"><span>PERSONAL AI SYSTEM</span><strong>Ready when you are.</strong></div>
-          <div class="visual-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="core">
+          <div class="core-mark">A<span>.</span></div>
+          <div class="core-label">ARCIS <small>INTELLIGENCE SYSTEM</small></div>
         </div>
-        <div class="float-chip chip-top"><span class="chip-dot"></span> Local AI</div>
-        <div class="float-chip chip-bottom">✦ <span>Built for flexibility</span></div>
-      </div>
-      <div class="hero-bottom"><span>01 / INTRODUCING ARCIS</span><span>SCROLL TO EXPLORE ↓</span></div>
-    </section>
-
-    <section class="ticker" aria-label="ARCIS capabilities"><div>THINK <b>✳</b> CREATE <b>✳</b> EXPLORE <b>✳</b> UNDERSTAND <b>✳</b> THINK <b>✳</b> CREATE <b>✳</b> EXPLORE <b>✳</b> UNDERSTAND <b>✳</b></div></section>
-
-    <section class="section-wrap section" id="about">
-      <div class="section-kicker">02 / THE IDEA</div>
-      <div class="about-grid">
-        <h2>Intelligence that<br><span>works your way.</span></h2>
-        <div class="about-copy"><p>ARCIS is an Android AI assistant built around a simple idea: your tools should adapt to you. Chat, explore information, understand content and create — all through one focused interface.</p><p class="muted">Capabilities depend on the installed model, device hardware and enabled online services. Offline and online features may have different requirements.</p></div>
+        <div class="float-chip chip-top">LOCAL AI <b>●</b></div>
+        <div class="float-chip chip-bottom"><span class="chip-dot"></span> YOUR DEVICE. YOUR RULES.</div>
       </div>
     </section>
 
-    <section class="section-wrap section" id="features">
-      <div class="section-heading"><div><div class="section-kicker">03 / CAPABILITIES</div><h2>More than a chat box.</h2></div><p>One assistant. Multiple ways to get things done.</p></div>
+    <section class="ticker" aria-label="ARCIS capabilities">
+      <div>LOCAL-FIRST AI <span>✳</span> PRIVATE BY DESIGN <span>✳</span> BUILT FOR ANDROID <span>✳</span> YOUR AI. YOUR CONTROL. <span>✳</span> LOCAL-FIRST AI <span>✳</span> PRIVATE BY DESIGN <span>✳</span></div>
+    </section>
+
+    <section class="section-wrap section-block" id="features">
+      <div class="section-heading">
+        <div><div class="eyebrow">WHAT ARCIS CAN DO</div><h2>One assistant.<br><span>Multiple capabilities.</span></h2></div>
+        <p>ARCIS brings everyday AI tools together in one Android experience. Availability depends on the selected model, device capability and connected services.</p>
+      </div>
       <div class="feature-grid">
-        <article class="feature-card feature-large"><div class="feature-icon">◈</div><span class="feature-number">01</span><h3>Offline AI</h3><p>Run supported AI models on your device for local, on-device interactions.</p><div class="feature-art offline-art"><div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div><div class="node-center">A</div></div></article>
-        <article class="feature-card"><div class="feature-icon">⌘</div><span class="feature-number">02</span><h3>Qwen models</h3><p>Use supported Qwen models for conversational intelligence and assistance.</p></article>
-        <article class="feature-card"><div class="feature-icon">▤</div><span class="feature-number">03</span><h3>AI chat & history</h3><p>Chat with ARCIS and return to saved conversations.</p></article>
-        <article class="feature-card"><div class="feature-icon">✧</div><span class="feature-number">04</span><h3>Image generation</h3><p>Turn text prompts into images when an image-generation service is configured.</p></article>
-        <article class="feature-card"><div class="feature-icon">⌕</div><span class="feature-number">05</span><h3>Web search</h3><p>Bring online information into your workflow when search is enabled.</p></article>
-        <article class="feature-card"><div class="feature-icon">▧</div><span class="feature-number">06</span><h3>File understanding</h3><p>Work with supported documents and extract useful information from files.</p></article>
-        <article class="feature-card"><div class="feature-icon">◉</div><span class="feature-number">07</span><h3>Image understanding</h3><p>Ask questions about images using a compatible vision model or service.</p></article>
-        <article class="feature-card"><div class="feature-icon">↗</div><span class="feature-number">08</span><h3>File generation</h3><p>Create supported files and content from your conversations.</p></article>
+        <article class="feature-card feature-large"><div class="feature-icon">⌘</div><div class="feature-number">01 / CORE</div><h3>On-device AI</h3><p>Chat and reason with supported local language models running on your Android device.</p><span class="card-glow"></span></article>
+        <article class="feature-card"><div class="feature-icon">▤</div><div class="feature-number">02 / FILES</div><h3>Work with files</h3><p>Understand supported documents and create useful file outputs.</p></article>
+        <article class="feature-card"><div class="feature-icon">◈</div><div class="feature-number">03 / VISION</div><h3>Image understanding</h3><p>Submit images for AI-assisted interpretation and analysis.</p></article>
+        <article class="feature-card"><div class="feature-icon">✧</div><div class="feature-number">04 / CREATE</div><h3>Image generation</h3><p>Turn prompts into generated images using the configured image service.</p></article>
+        <article class="feature-card"><div class="feature-icon">⌕</div><div class="feature-number">05 / SEARCH</div><h3>Online search</h3><p>Use web search when an answer needs current information or external sources.</p></article>
+        <article class="feature-card"><div class="feature-icon">◷</div><div class="feature-number">06 / HISTORY</div><h3>Conversation history</h3><p>Keep separate conversations and return to previous chats.</p></article>
       </div>
     </section>
 
-    <section class="manifesto">
-      <div class="section-wrap manifesto-inner"><div class="section-kicker">04 / THE ARCIS PRINCIPLE</div><h2>Technology should<br>expand <span>your control.</span></h2><p>Designed to bring useful AI capabilities together in one Android experience.</p></div>
+    <section class="privacy-section" id="privacy">
+      <div class="section-wrap privacy-inner">
+        <div class="privacy-symbol"><div class="shield">◇</div><span>LOCAL-FIRST<br>ARCHITECTURE</span></div>
+        <div class="privacy-copy"><div class="eyebrow">CONTROL YOUR DATA</div><h2>Designed with<br><span>privacy in mind.</span></h2><p>ARCIS is built around on-device AI for core conversations. Some optional capabilities, such as online search or cloud-based image services, may send relevant prompts or data to external providers. Check the app's privacy information before using those features.</p></div>
+      </div>
     </section>
 
-    <section class="section-wrap section download-section" id="download">
-      <div class="download-panel">
-        <div class="download-copy"><div class="section-kicker">05 / GET STARTED</div><h2>Meet your new<br><span>AI workspace.</span></h2><p>Download ARCIS for Android and explore its capabilities.</p><div class="requirements"><div><small>VERSION</small><strong data-version>1.0</strong></div><div><small>REQUIRES</small><strong>Android 8.0+</strong></div><div><small>FORMAT</small><strong>APK</strong></div></div><a class="button button-primary download-button" id="downloadButton" href="downloads/arcis.apk" download>Download APK <span>↓</span></a><p class="download-note" id="downloadNote">The APK will be available here when the release file is added.</p></div>
-        <div class="download-side"><div class="download-orb"><span>A</span></div><div class="side-label">ARCIS / ANDROID</div><div class="side-line"></div><div class="side-foot">YOUR AI. YOUR CONTROL.<br>YOUR INTELLIGENCE.</div></div>
+    <section class="section-wrap section-block about-section" id="about">
+      <div class="about-copy"><div class="eyebrow">THE IDEA BEHIND ARCIS</div><h2>Intelligence should<br>be <span>in your hands.</span></h2><p>ARCIS is an Android AI assistant project focused on giving users a practical, flexible AI experience with local processing at its foundation.</p><p class="developer-line">INDEPENDENTLY DEVELOPED BY <b>PRABHANSHU</b></p></div>
+      <div class="about-panel"><div class="panel-top"><span>ARCIS / SYSTEM</span><span class="status"><i></i> READY</span></div><div class="panel-content"><span class="prompt-mark">></span><div><b>YOUR AI. YOUR CONTROL.</b><p>Built to bring useful intelligence closer to your device.</p></div></div><div class="panel-bottom"><span>ANDROID APPLICATION</span><span>v<span data-version>1.0</span></span></div></div>
+    </section>
+
+    <section class="download-section" id="download">
+      <div class="section-wrap download-inner">
+        <div class="eyebrow">GET STARTED</div>
+        <h2>Make room for<br><span>more intelligence.</span></h2>
+        <p>Download ARCIS for Android and explore its capabilities.</p>
+        <a class="button button-primary download-main" id="downloadButton" href="https://github.com/Prabhanshu-developer/arcis-website/releases/download/v1.0/arcis.apk">Download ARCIS APK <span>↓</span></a>
+        <div class="download-details"><span>VERSION <b data-version>1.0</b></span><span>MINIMUM ANDROID <b>8.0+</b></span><span>FILE <b>APK</b></span></div>
+        <p class="install-note">Android may ask you to allow installation from your browser. Only install apps you trust.</p>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><div class="section-wrap footer-top"><a class="brand" href="#home"><img src="assets/arcis-logo.png" alt="" onerror="this.style.display='none'"><span>ARCIS</span></a><span>Developed by <strong>Prabhanshu</strong></span><a href="#home">Back to top ↑</a></div><div class="section-wrap footer-bottom"><span>© <span id="year"></span> ARCIS. All rights reserved.</span><span>Built for curious minds.</span></div></footer>
+  <footer class="site-footer">
+    <div class="footer-main"><a class="brand" href="#home"><img src="assets/arcis-logo.png" alt="" onerror="this.style.display='none'"><span>ARCIS</span></a><p>Your AI. Your Control. Your Intelligence.</p><a href="#home" class="back-top">BACK TO TOP ↑</a></div>
+    <div class="footer-bottom"><span>© <span id="year"></span> ARCIS. Developed by Prabhanshu.</span><span>ANDROID AI ASSISTANT</span></div>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
