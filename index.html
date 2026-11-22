@@ -39,9 +39,10 @@
           <a class="button button-primary" href="#download">Download ARCIS <span>↓</span></a>
           <a class="button button-secondary" href="#features">Explore features</a>
         </div>
-        <div class="hero-meta"><span>VERSION <b data-version>1.0</b></span><i></i><span>ANDROID <b>8.0+</b></span><i></i><span>APK</span></div>
+        <div class="hero-meta"><span>VERSION <b data-version>latest</b></span><i></i><span>ANDROID <b>8.0+</b></span><i></i><span>APK</span></div>
       </div>
-      <div class="hero-visual" aria-label="ARCIS branding graphic">
+      <div class="hero-visual" aria-label="Interactive 3D ARCIS graphic">
+        <div class="hero3d" id="hero3d"></div><div class="node-label" id="nodeLabel"></div><div class="drag-hint">Drag to rotate · tap a node</div>
         <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
         <div class="core">
           <div class="core-mark">A<span>.</span></div>
@@ -80,7 +81,7 @@
 
     <section class="section-wrap section-block about-section" id="about">
       <div class="about-copy"><div class="eyebrow">THE IDEA BEHIND ARCIS</div><h2>Intelligence should<br>be <span>in your hands.</span></h2><p>ARCIS is an Android AI assistant project focused on giving users a practical, flexible AI experience with local processing at its foundation.</p><p class="developer-line">INDEPENDENTLY DEVELOPED BY <b>PRABHANSHU</b></p></div>
-      <div class="about-panel"><div class="panel-top"><span>ARCIS / SYSTEM</span><span class="status"><i></i> READY</span></div><div class="panel-content"><span class="prompt-mark">></span><div><b>YOUR AI. YOUR CONTROL.</b><p>Built to bring useful intelligence closer to your device.</p></div></div><div class="panel-bottom"><span>ANDROID APPLICATION</span><span>v<span data-version>1.0</span></span></div></div>
+      <div class="about-panel"><div class="panel-top"><span>ARCIS / SYSTEM</span><span class="status"><i></i> READY</span></div><div class="panel-content"><span class="prompt-mark">></span><div><b>YOUR AI. YOUR CONTROL.</b><p>Built to bring useful intelligence closer to your device.</p></div></div><div class="panel-bottom"><span>ANDROID APPLICATION</span><span>v<span data-version>latest</span></span></div></div>
     </section>
 
     <section class="download-section" id="download">
@@ -88,9 +89,10 @@
         <div class="eyebrow">GET STARTED</div>
         <h2>Make room for<br><span>more intelligence.</span></h2>
         <p>Download ARCIS for Android and explore its capabilities.</p>
-        <a class="button button-primary download-main" id="downloadButton" href="https://github.com/Prabhanshu-developer/arcis-website/releases/download/v1.0/arcis.apk">Download ARCIS APK <span>↓</span></a>
-        <div class="download-details"><span>VERSION <b data-version>1.0</b></span><span>MINIMUM ANDROID <b>8.0+</b></span><span>FILE <b>APK</b></span></div>
+        <a class="button button-primary download-main" id="downloadButton" href="https://github.com/Prabhanshu-developer/arcis-website/releases/latest/download/arcis.apk">Download ARCIS APK <span>↓</span></a>
+        <div class="download-details"><span>VERSION <b data-version>latest</b></span><span>MINIMUM ANDROID <b>8.0+</b></span><span>FILE <b>APK</b></span><span>SIZE <b id="dlSize">—</b></span></div>
         <p class="install-note">Android may ask you to allow installation from your browser. Only install apps you trust.</p>
+        <p class="release-line"><span id="releaseDate">Checking GitHub for the newest release…</span> <a href="https://github.com/Prabhanshu-developer/arcis-website/releases" id="allReleases">All releases</a></p>
       </div>
     </section>
   </main>
@@ -99,6 +101,7 @@
     <div class="footer-main"><a class="brand" href="#home"><img src="assets/arcis-logo.png" alt="" onerror="this.style.display='none'"><span>ARCIS</span></a><p>Your AI. Your Control. Your Intelligence.</p><a href="#home" class="back-top">BACK TO TOP ↑</a></div>
     <div class="footer-bottom"><span>© <span id="year"></span> ARCIS. Developed by Prabhanshu.</span><span>ANDROID AI ASSISTANT</span></div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
