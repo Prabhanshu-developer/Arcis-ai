@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="progress" id="progress"></div>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
   <header class="site-header">
@@ -23,7 +24,9 @@
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav id="mainNav">
       <a href="#features">Features</a>
+      <a href="#explore">Explore</a>
       <a href="#privacy">Privacy</a>
+      <a href="#faq">FAQ</a>
       <a href="#about">About</a>
       <a class="nav-download" href="#download">Download <span>↗</span></a>
     </nav>
@@ -57,6 +60,8 @@
       <div>LOCAL-FIRST AI <span>✳</span> PRIVATE BY DESIGN <span>✳</span> BUILT FOR ANDROID <span>✳</span> YOUR AI. YOUR CONTROL. <span>✳</span> LOCAL-FIRST AI <span>✳</span> PRIVATE BY DESIGN <span>✳</span></div>
     </section>
 
+    <section class="section-wrap manifesto"><p id="manifesto">Many AI assistants live on distant servers. ARCIS starts on your phone. On-device AI handles your core conversations, so intelligence stays close to you, and when you choose online search or image generation, you know exactly what leaves your device.</p></section>
+
     <section class="section-wrap section-block" id="features">
       <div class="section-heading">
         <div><div class="eyebrow">WHAT ARCIS CAN DO</div><h2>One assistant.<br><span>Multiple capabilities.</span></h2></div>
@@ -72,6 +77,22 @@
       </div>
     </section>
 
+    <section class="section-wrap pillar-wrap" id="pillars"><div class="pillars" id="pillarList"></div></section>
+
+    <section class="section-wrap section-block" id="explore">
+      <div class="section-heading"><div><div class="eyebrow">INTERACTIVE PREVIEW</div><h2>See what ARCIS<br><span>can do.</span></h2></div><p>Pick a capability and move your cursor over the phone. Previews are illustrations, not real screenshots.</p></div>
+      <div class="explorer">
+        <div class="tabs" id="tabs" role="tablist"></div>
+        <div class="stage" id="stage"><div class="phone" id="phone"><div class="phone-notch"></div><div class="phone-screen"><div class="phone-bar"><b>ARCIS</b><span id="phoneTag"></span></div><div class="chat" id="chat"></div></div></div></div>
+        <div class="detail" id="detail"></div>
+      </div>
+    </section>
+
+    <section class="section-wrap section-block" id="ideas">
+      <div class="section-heading"><div><div class="eyebrow">WHERE TO START</div><h2>Ideas for<br><span>your first chat.</span></h2></div><p>Each idea jumps to the matching capability in the preview above.</p></div>
+      <div class="idea-grid" id="ideaGrid"></div>
+    </section>
+
     <section class="privacy-section" id="privacy">
       <div class="section-wrap privacy-inner">
         <div class="privacy-symbol"><div class="shield">◇</div><span>LOCAL-FIRST<br>ARCHITECTURE</span></div>
@@ -82,6 +103,27 @@
     <section class="section-wrap section-block about-section" id="about">
       <div class="about-copy"><div class="eyebrow">THE IDEA BEHIND ARCIS</div><h2>Intelligence should<br>be <span>in your hands.</span></h2><p>ARCIS is an Android AI assistant project focused on giving users a practical, flexible AI experience with local processing at its foundation.</p><p class="developer-line">INDEPENDENTLY DEVELOPED BY <b>PRABHANSHU</b></p></div>
       <div class="about-panel"><div class="panel-top"><span>ARCIS / SYSTEM</span><span class="status"><i></i> READY</span></div><div class="panel-content"><span class="prompt-mark">></span><div><b>YOUR AI. YOUR CONTROL.</b><p>Built to bring useful intelligence closer to your device.</p></div></div><div class="panel-bottom"><span>ANDROID APPLICATION</span><span>v<span data-version>latest</span></span></div></div>
+    </section>
+
+    <section class="section-wrap section-block" id="dataflow">
+      <div class="section-heading"><div><div class="eyebrow">WHERE YOUR DATA GOES</div><h2>You decide<br><span>what leaves your device.</span></h2></div><p>Switch online features on or off to see which capabilities may involve an external provider.</p></div>
+      <label class="switch"><input type="checkbox" id="onlineToggle"><span class="track"><i></i></span><b id="switchText">Online features: off</b></label>
+      <div class="flow-grid" id="flowGrid"></div>
+    </section>
+
+    <section class="section-wrap section-block" id="install">
+      <div class="section-heading"><div><div class="eyebrow">INSTALL</div><h2>From download<br><span>to your phone.</span></h2></div><p>ARCIS is distributed as an APK for Android 8.0 or newer, so installation is a few manual steps.</p></div>
+      <ol class="steps">
+        <li><b>Download the APK</b><span>Use the button below. It always fetches the newest GitHub release.</span></li>
+        <li><b>Open the file</b><span>Tap the download in your browser or Files app.</span></li>
+        <li><b>Allow the install</b><span>Android may ask to let your browser install apps. Only do this for apps you trust.</span></li>
+        <li><b>Open ARCIS</b><span>Launch it and follow the setup inside the app.</span></li>
+      </ol>
+    </section>
+
+    <section class="section-wrap section-block" id="faq">
+      <div class="section-heading"><div><div class="eyebrow">QUESTIONS</div><h2>Good to know<br><span>before you install.</span></h2></div></div>
+      <div class="faq" id="faqList"></div>
     </section>
 
     <section class="download-section" id="download">
@@ -101,7 +143,9 @@
     <div class="footer-main"><a class="brand" href="#home"><img src="assets/arcis-logo.png" alt="" onerror="this.style.display='none'"><span>ARCIS</span></a><p>Your AI. Your Control. Your Intelligence.</p><a href="#home" class="back-top">BACK TO TOP ↑</a></div>
     <div class="footer-bottom"><span>© <span id="year"></span> ARCIS. Developed by Prabhanshu.</span><span>ANDROID AI ASSISTANT</span></div>
   </footer>
+  <a class="float-dl" id="floatDl" href="#download">Download ARCIS <span>↓</span></a>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
+  <script src="scene.js"></script>
 </body>
 </html>

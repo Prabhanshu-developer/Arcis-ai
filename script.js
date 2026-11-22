@@ -52,7 +52,7 @@ if (matchMedia("(hover:hover)").matches && !reduceMotion) {
 }
 
 /* ---------- 3D hero: the ARCIS burst ---------- */
-(function () {
+(function () { try {
   const host = document.getElementById("hero3d"), label = document.getElementById("nodeLabel");
   if (!host || !window.THREE) return;
   const T = THREE;
@@ -86,7 +86,7 @@ if (matchMedia("(hover:hover)").matches && !reduceMotion) {
 
   const pos = new Float32Array(360 * 3);
   for (let i = 0; i < 360; i++) {
-    const v = new T.Vector3().randomDirection().multiplyScalar(4 + Math.random() * 2.5); pos.set([v.x, v.y, v.z], i * 3);
+    const u = Math.random() * 2 - 1, a = Math.random() * 6.2832, q = Math.sqrt(1 - u * u), m = 4 + Math.random() * 2.5; pos.set([q * Math.cos(a) * m, u * m, q * Math.sin(a) * m], i * 3);
   }
   const dg = new T.BufferGeometry(); dg.setAttribute("position", new T.BufferAttribute(pos, 3));
   const dust = new T.Points(dg, new T.PointsMaterial({ color: 0xb9b0ff, size: .04, transparent: true, opacity: .6 })); scene.add(dust);
@@ -128,7 +128,7 @@ if (matchMedia("(hover:hover)").matches && !reduceMotion) {
     if (!drag) { rot.y += vel.y; rot.x = Math.max(-1.2, Math.min(1.2, rot.x + vel.x)); vel.y += (idle - vel.y) * .03; vel.x *= .94; }
     const tx = inside && !drag ? (py / H - .5) * .4 : 0, ty = inside && !drag ? (px / W - .5) * .5 : 0;
     tilt.x += (tx - tilt.x) * .06; tilt.y += (ty - tilt.y) * .06;
-    burst.rotation.set(rot.x + tilt.x, rot.y + tilt.y, Math.min(scrollY, 800) * .0006);
+    burst.rotation.set(rot.x + tilt.x + (window.__tilt ? __tilt.x : 0), rot.y + tilt.y + (window.__tilt ? __tilt.y : 0), Math.min(scrollY, 800) * .0006);
     rings[0].rotation.z = t * .15; rings[1].rotation.z = -t * .1; dust.rotation.y = t * .02;
     hover = inside && !drag ? pick() : null;
     host.style.cursor = hover ? "pointer" : "";
@@ -142,4 +142,108 @@ if (matchMedia("(hover:hover)").matches && !reduceMotion) {
   };
   new IntersectionObserver(([en]) => { if (en.isIntersecting && !raf) frame(performance.now()); else if (!en.isIntersecting) { cancelAnimationFrame(raf); raf = 0; } }).observe(host);
   document.documentElement.classList.add("webgl");
+} catch (err) { console.error("ARCIS 3D hero failed:", err); }
+})();
+
+/* ---------- Rebuild: progress, explorer, data flow, FAQ ---------- */
+const $ = id => document.getElementById(id);
+addEventListener("scroll", () => { $("progress").style.width = scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight) * 100 + "%"; }, { passive: true });
+
+const CAPS = [
+  { n: "On-device AI", tag: "LOCAL", t: "Chat and reason with supported local language models running on your Android device.", b: ["Core conversations are built around on-device AI", "Which models work depends on your device"], c: [["me", "Explain recursion simply."], ["ai", "Recursion is when a function solves a problem by calling itself on a smaller piece of it."]] },
+  { n: "Work with files", tag: "FILES", t: "Understand supported documents and create useful file outputs.", b: ["Read supported documents", "Create file outputs from a conversation"], c: [["me", "Summarize this document."], ["ai", "Here are the three main points from the file you shared."]] },
+  { n: "Image understanding", tag: "VISION", t: "Submit images for AI-assisted interpretation and analysis.", b: ["Ask questions about an image", "Availability depends on the selected model and device"], c: [["me", "What is in this photo?"], ["ai", "I can describe the scene and answer questions about it."]] },
+  { n: "Image generation", tag: "CREATE", t: "Turn prompts into generated images using the configured image service.", b: ["Uses an external image service", "Your prompt is sent to that service"], c: [["me", "Draw a neon city at night."], ["ai", "Generating your image with the configured service."]] },
+  { n: "Online search", tag: "SEARCH", t: "Use web search when an answer needs current information or external sources.", b: ["For up-to-date answers", "Relevant queries go to a search provider"], c: [["me", "What happened today in tech?"], ["ai", "Searching the web for current sources."]] },
+  { n: "Conversation history", tag: "HISTORY", t: "Keep separate conversations and return to previous chats.", b: ["Separate chats per topic", "Pick up where you left off"], c: [["me", "Back to my study plan chat."], ["ai", "Opened your earlier conversation."]] }
+];
+const tabs = $("tabs");
+function showCap(i) {
+  const c = CAPS[i];
+  tabs.querySelectorAll(".tab").forEach((b, j) => b.setAttribute("aria-selected", j === i));
+  $("phoneTag").textContent = c.tag;
+  $("chat").innerHTML = c.c.map((m, k) => `<div class="msg ${m[0]}" style="animation-delay:${k * .25}s">${m[1]}</div>`).join("");
+  $("detail").innerHTML = `<h3>${c.n}</h3><p>${c.t}</p><ul>${c.b.map(x => `<li>${x}</li>`).join("")}</ul>`;
+}
+CAPS.forEach((c, i) => { const b = document.createElement("button"); b.className = "tab"; b.role = "tab"; b.textContent = c.n; b.onclick = () => showCap(i); tabs.appendChild(b); });
+showCap(0);
+const stage = $("stage"), phone = $("phone");
+if (!reduceMotion) {
+  stage.addEventListener("pointermove", e => { const r = stage.getBoundingClientRect(); phone.style.setProperty("--py", ((e.clientX - r.left) / r.width - .5) * 40 + "deg"); phone.style.setProperty("--px", (.5 - (e.clientY - r.top) / r.height) * 24 + "deg"); });
+  stage.addEventListener("pointerleave", () => { phone.style.setProperty("--py", "-14deg"); phone.style.setProperty("--px", "6deg"); });
+}
+
+const FLOW = [
+  ["Chat with local models", "Core conversations run on supported models on your device.", "STAYS ON DEVICE", false],
+  ["Online search", "Relevant queries are sent to a search provider to fetch current results.", "EXTERNAL PROVIDER", true],
+  ["Image generation", "Your prompt is sent to the configured image service.", "EXTERNAL PROVIDER", true]
+];
+$("flowGrid").innerHTML = FLOW.map(f => `<div class="flow ${f[3] ? "ext off" : "on"}"><h3>${f[0]}</h3><p>${f[1]}</p><span class="chip">${f[2]}</span></div>`).join("");
+$("onlineToggle").addEventListener("change", e => {
+  $("switchText").textContent = "Online features: " + (e.target.checked ? "on" : "off");
+  $("flowGrid").querySelectorAll(".ext").forEach(n => { n.classList.toggle("on", e.target.checked); n.classList.toggle("off", !e.target.checked); });
+});
+
+const FAQ = [
+  ["What is ARCIS?", "An Android AI assistant with on-device AI at its core, built to give you a practical, flexible experience."],
+  ["Does ARCIS need the internet?", "Core conversations use on-device AI. Online search and cloud image generation need a connection and send relevant data to external providers."],
+  ["Which Android versions are supported?", "Android 8.0 or newer."],
+  ["Why is the download large?", "The latest file size is shown next to the download button, so you can check it before you start."],
+  ["How do I get updates?", "Download again from this page. The button always points to the newest GitHub release."],
+  ["Is it safe to install an APK?", "Android may ask you to allow installs from your browser. Only install apps from sources you trust."],
+  ["Who makes ARCIS?", "ARCIS is independently developed by Prabhanshu."]
+];
+$("faqList").innerHTML = FAQ.map((f, i) => `<div><button aria-expanded="false" aria-controls="a${i}">${f[0]}<span>+</span></button><div class="a" id="a${i}"><p>${f[1]}</p></div></div>`).join("");
+$("faqList").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const open = b.getAttribute("aria-expanded") !== "true";
+  b.setAttribute("aria-expanded", open); b.nextElementSibling.classList.toggle("open", open);
+});
+
+/* ---------- Engagement layer ---------- */
+(function () {
+  const spot = document.createElement("div"); spot.className = "spot"; document.body.prepend(spot);
+  addEventListener("pointermove", e => { spot.style.setProperty("--mx", e.clientX + "px"); spot.style.setProperty("--my", e.clientY + "px"); }, { passive: true });
+
+  const m = $("manifesto"), words = m.textContent.split(" ");
+  m.innerHTML = words.map(w => `<span class="w">${w}</span>`).join(" ");
+  const ws = m.querySelectorAll(".w");
+  const paint = () => {
+    const r = m.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .85 - r.top) / (r.height + innerHeight * .35)));
+    ws.forEach((w, i) => w.classList.toggle("lit", reduceMotion || i / ws.length < p));
+  };
+  addEventListener("scroll", paint, { passive: true }); paint();
+
+  const PILL = [
+    ["Your AI", "A flexible assistant in one Android app: chat, files, images, search and conversation history, all in one place.", "#8e70f7"],
+    ["Your Control", "On-device AI is the foundation. Online search and cloud image generation are optional, and you can see what each one involves.", "#23c9c1"],
+    ["Your Intelligence", "Core conversations run on supported local models on your device, so useful intelligence stays in your hands.", "#6c91ec"]
+  ];
+  const pl = $("pillarList");
+  pl.innerHTML = PILL.map((p, i) => `<button class="pillar${i ? "" : " active"}" style="--c:${p[2]}"><h3>${p[0]}</h3><p>${p[1]}</p></button>`).join("");
+  const ps = pl.querySelectorAll(".pillar"), act = b => ps.forEach(x => x.classList.toggle("active", x === b));
+  ps.forEach(b => { b.addEventListener("mouseenter", () => matchMedia("(hover:hover)").matches && act(b)); b.addEventListener("click", () => act(b)); b.addEventListener("focus", () => act(b)); });
+
+  const IDEAS = [
+    ["Study and learn", "Ask for explanations, summaries and practice questions from on-device AI.", 0],
+    ["Make sense of documents", "Share a supported file and ask for the key points.", 1],
+    ["Understand what you see", "Submit an image and ask questions about it.", 2],
+    ["Stay current", "Use web search when an answer needs fresh sources.", 4]
+  ];
+  $("ideaGrid").innerHTML = IDEAS.map((d, i) => `<button class="idea" data-i="${i}"><b>${d[0]}</b><span>${d[1]}</span><em>SEE IT IN THE PREVIEW ↑</em></button>`).join("");
+  $("ideaGrid").addEventListener("click", e => {
+    const b = e.target.closest(".idea"); if (!b) return;
+    showCap(IDEAS[b.dataset.i][2]); $("explore").scrollIntoView({ behavior: "smooth" });
+  });
+
+  const fl = $("floatDl"); let past = false, atDl = false;
+  const upd = () => fl.classList.toggle("show", past && !atDl);
+  addEventListener("scroll", () => { past = scrollY > 700; upd(); }, { passive: true });
+  new IntersectionObserver(([en]) => { atDl = en.isIntersecting; upd(); }).observe($("download"));
+
+  const dl = $("downloadButton");
+  if (matchMedia("(hover:hover)").matches && !reduceMotion) {
+    dl.addEventListener("pointermove", e => { const r = dl.getBoundingClientRect(); dl.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .15}px,${(e.clientY - r.top - r.height / 2) * .3}px)`; });
+    dl.addEventListener("pointerleave", () => { dl.style.transform = ""; });
+  }
 })();
