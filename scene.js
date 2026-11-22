@@ -42,7 +42,7 @@
   try {
     const host = document.createElement("div"); host.id = "bg3d"; document.body.prepend(host);
     const r = renderer(host), scene = new T.Scene(), cam = new T.PerspectiveCamera(40, 1, .1, 60); cam.position.z = 9;
-    const b = burst(.42); scene.add(b);
+    const b = burst(.3); b.children[0].material.opacity = .12; scene.add(b);
     const n = 700, pos = new Float32Array(n * 3);
     for (let i = 0; i < n; i++) pos.set([(Math.random() - .5) * 22, (Math.random() - .5) * 40, (Math.random() - .5) * 14 - 2], i * 3);
     const dg = new T.BufferGeometry(); dg.setAttribute("position", new T.BufferAttribute(pos, 3));
@@ -51,7 +51,7 @@
     job(host, r, scene, cam, t => {
       const p = scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight), f = p * (K.length - 1), i = Math.min(K.length - 2, f | 0), u = smooth(f - i), a = K[i], c = K[i + 1], L = k => a[k] + (c[k] - a[k]) * u;
       const mob = innerWidth < 760 ? .3 : 1, fade = smooth(clamp((p - .03) / .08, 0, 1));
-      b.position.set(L("x") * mob, L("y"), 0); b.scale.setScalar(L("s") * fade * (mob < 1 ? .8 : 1)); b.spread(L("sp"));
+      b.position.set(L("x") * mob, L("y"), 0); b.scale.setScalar(L("s") * fade * (mob < 1 ? .3 : 1)); b.spread(L("sp"));
       b.rotation.set(.3 + __tilt.x, L("ry") + (reduce ? 0 : t * .0001), 0);
       dust.position.y = p * 9; dust.rotation.y = reduce ? 0 : t * .00004;
     });
