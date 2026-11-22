@@ -154,7 +154,7 @@ const CAPS = [
   { n: "On-device AI", tag: "LOCAL", t: "Chat and reason with supported local language models running on your Android device.", b: ["Core conversations are built around on-device AI", "Which models work depends on your device"], c: [["me", "Explain recursion simply."], ["ai", "Recursion is when a function solves a problem by calling itself on a smaller piece of it."]] },
   { n: "Work with files", tag: "FILES", t: "Understand supported documents and create useful file outputs.", b: ["Read supported documents", "Create file outputs from a conversation"], c: [["me", "Summarize this document."], ["ai", "Here are the three main points from the file you shared."]] },
   { n: "Image understanding", tag: "VISION", t: "Submit images for AI-assisted interpretation and analysis, processed locally on your device.", b: ["Ask questions about an image", "Image processing runs locally on your device", "Availability depends on the selected model and device"], c: [["me", "What is in this photo?"], ["ai", "I can describe the scene and answer questions about it."]] },
-  { n: "Image generation", tag: "CREATE", t: "Turn prompts into generated images using the configured image service.", b: ["Uses an external image service", "Your prompt is sent to that service"], c: [["me", "Draw a neon city at night."], ["ai", "Generating your image with the configured service."]] },
+  { n: "Image generation", tag: "CREATE", t: "Turn prompts into generated images, created locally on your device.", b: ["Image processing runs locally on your device", "Describe what you want and let ARCIS generate it"], c: [["me", "Draw a neon city at night."], ["ai", "Generating your image on your device."]] },
   { n: "Online search", tag: "SEARCH", t: "Use web search when an answer needs current information or external sources.", b: ["For up-to-date answers", "Relevant queries go to a search provider"], c: [["me", "What happened today in tech?"], ["ai", "Searching the web for current sources."]] },
   { n: "Conversation history", tag: "HISTORY", t: "Keep separate conversations and return to previous chats.", b: ["Separate chats per topic", "Pick up where you left off"], c: [["me", "Back to my study plan chat."], ["ai", "Opened your earlier conversation."]] }
 ];
@@ -178,7 +178,7 @@ const FLOW = [
   ["Chat with local models", "Core conversations run on supported models on your device.", "STAYS ON DEVICE", false],
   ["Image understanding", "Images you submit for analysis are processed locally on your device.", "STAYS ON DEVICE", false],
   ["Online search", "Relevant queries are sent to a search provider to fetch current results.", "EXTERNAL PROVIDER", true],
-  ["Image generation", "Your prompt is sent to the configured image service.", "EXTERNAL PROVIDER", true]
+  ["Image generation", "Prompts are turned into images locally on your device.", "STAYS ON DEVICE", false]
 ];
 $("flowGrid").innerHTML = FLOW.map(f => `<div class="flow ${f[3] ? "ext off" : "on"}"><h3>${f[0]}</h3><p>${f[1]}</p><span class="chip">${f[2]}</span></div>`).join("");
 $("onlineToggle").addEventListener("change", e => {
@@ -188,7 +188,7 @@ $("onlineToggle").addEventListener("change", e => {
 
 const FAQ = [
   ["What is ARCIS?", "An Android AI assistant with on-device AI at its core, built to give you a practical, flexible experience."],
-  ["Does ARCIS need the internet?", "Core conversations and image processing run on your device. Online search and cloud image generation need a connection and send relevant data to external providers."],
+  ["Does ARCIS need the internet?", "Core conversations and image processing run on your device. Online search needs a connection and sends relevant queries to a search provider."],
   ["Which Android versions are supported?", "Android 8.0 or newer."],
   ["Why is the download large?", "The latest file size is shown next to the download button, so you can check it before you start."],
   ["How do I get updates?", "Download again from this page. The button always points to the newest GitHub release."],
@@ -218,7 +218,7 @@ $("faqList").addEventListener("click", e => {
 
   const PILL = [
     ["Your AI", "A flexible assistant in one Android app: chat, files, images, search and conversation history, all in one place.", "#8e70f7"],
-    ["Your Control", "On-device AI is the foundation. Online search and cloud image generation are optional, and you can see what each one involves.", "#23c9c1"],
+    ["Your Control", "On-device AI is the foundation. Online search is optional, and you can see what it involves.", "#23c9c1"],
     ["Your Intelligence", "Core conversations run on supported local models on your device, so useful intelligence stays in your hands.", "#6c91ec"]
   ];
   const pl = $("pillarList");
