@@ -113,6 +113,7 @@ if (matchMedia("(hover:hover)").matches && !reduceMotion) {
     local(e); drag = false;
     const n = moved < 8 && pick();
     if (n) {
+      if (window.openFeature) { openFeature(n.userData.f); return; }
       const card = document.querySelectorAll(".feature-card")[n.userData.f];
       if (card) { card.scrollIntoView({ behavior: "smooth", block: "center" }); setTimeout(() => { card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash"); }, 600); }
     }

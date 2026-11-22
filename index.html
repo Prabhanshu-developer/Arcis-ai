@@ -62,6 +62,8 @@
 
     <section class="section-wrap manifesto"><p id="manifesto">Many AI assistants live on distant servers. ARCIS starts on your phone. On-device AI handles your core conversations, so intelligence stays close to you, and when you choose online search or image generation, you know exactly what leaves your device.</p></section>
 
+    <section class="section-wrap stats" id="stats"></section>
+
     <section class="section-wrap section-block" id="features">
       <div class="section-heading">
         <div><div class="eyebrow">WHAT ARCIS CAN DO</div><h2>One assistant.<br><span>Multiple capabilities.</span></h2></div>
@@ -77,7 +79,14 @@
       </div>
     </section>
 
+    <section class="section-wrap ring-sec" id="ringSec">
+      <div class="section-heading"><div><div class="eyebrow">SPIN THE RING</div><h2>Six capabilities,<br><span>one rotating ring.</span></h2></div><p>Drag to spin it. Tap a card to see that capability in the phone preview.</p></div>
+      <div class="ring-scene" id="ringScene"><div class="ring" id="ring"></div></div>
+    </section>
+
     <section class="section-wrap pillar-wrap" id="pillars"><div class="pillars" id="pillarList"></div></section>
+
+    <section class="journey" id="journey"><div class="j-sticky"><div class="eyebrow j-eyebrow">THE ARCIS FLOW</div><div class="j-track" id="jTrack"></div><div class="j-dots" id="jDots"></div></div></section>
 
     <section class="section-wrap section-block" id="explore">
       <div class="section-heading"><div><div class="eyebrow">INTERACTIVE PREVIEW</div><h2>See what ARCIS<br><span>can do.</span></h2></div><p>Pick a capability and move your cursor over the phone. Previews are illustrations, not real screenshots.</p></div>
@@ -91,6 +100,11 @@
     <section class="section-wrap section-block" id="ideas">
       <div class="section-heading"><div><div class="eyebrow">WHERE TO START</div><h2>Ideas for<br><span>your first chat.</span></h2></div><p>Each idea jumps to the matching capability in the preview above.</p></div>
       <div class="idea-grid" id="ideaGrid"></div>
+    </section>
+
+    <section class="section-wrap section-block" id="finder">
+      <div class="section-heading"><div><div class="eyebrow">FIND YOUR FIT</div><h2>What matters<br><span>to you?</span></h2></div><p>Pick as many as you like and see which ARCIS capabilities match.</p></div>
+      <div class="chips" id="chips"></div><div class="matches" id="matches"></div>
     </section>
 
     <section class="privacy-section" id="privacy">
@@ -121,6 +135,11 @@
       </ol>
     </section>
 
+    <section class="section-wrap section-block" id="releases">
+      <div class="section-heading"><div><div class="eyebrow">VERSION HISTORY</div><h2>Every release,<br><span>straight from GitHub.</span></h2></div><p>This list updates itself whenever you publish a new release.</p></div>
+      <div class="timeline" id="relList"><p class="empty">Loading releases…</p></div>
+    </section>
+
     <section class="section-wrap section-block" id="faq">
       <div class="section-heading"><div><div class="eyebrow">QUESTIONS</div><h2>Good to know<br><span>before you install.</span></h2></div></div>
       <div class="faq" id="faqList"></div>
@@ -135,6 +154,7 @@
         <div class="download-details"><span>VERSION <b data-version>latest</b></span><span>MINIMUM ANDROID <b>8.0+</b></span><span>FILE <b>APK</b></span><span>SIZE <b id="dlSize">—</b></span></div>
         <p class="install-note">Android may ask you to allow installation from your browser. Only install apps you trust.</p>
         <p class="release-line"><span id="releaseDate">Checking GitHub for the newest release…</span> <a href="https://github.com/Prabhanshu-developer/arcis-website/releases" id="allReleases">All releases</a></p>
+        <div class="qr" id="qrBox" hidden></div>
       </div>
     </section>
   </main>
@@ -147,5 +167,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
   <script src="scene.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script src="extras.js"></script>
+  <script src="drawers.js"></script>
 </body>
 </html>
